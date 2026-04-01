@@ -1,0 +1,44 @@
+# Butterfly 主题配置
+
+# 导航菜单
+menu:
+  首页: /
+  归档: /archives
+  标签: /tags
+  分类: /categories
+  关于: /about
+
+# 代码高亮
+highlight_theme: mac
+
+# 社交链接
+social:
+  github: https://github.com/Yayin222
+
+# 页脚
+footer:
+  owner:
+    enable: true
+    name: Yayin
+  since: 2026
+
+# 文章配置
+post:
+  meta:
+    author: true
+    date: true
+    tags: true
+    categories: true
+
+# 头像
+avatar:
+  img: /images/avatar.png
+  effect: true
+
+# 首页文章封面
+index_post_cover:
+  enable: true
+  default_cover: /images/default-cover.png
+
+# 暗色模式
+display_mode: dark
