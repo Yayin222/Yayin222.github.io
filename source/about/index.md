@@ -18,7 +18,6 @@ Hi，我是 Yayin 👋
 ## 联系方式
 
 - GitHub: [@Yayin222](https://github.com/Yayin222)
-- Email: shujie20@mails.ucas.ac.cn
 
 ## 关于博客
 
