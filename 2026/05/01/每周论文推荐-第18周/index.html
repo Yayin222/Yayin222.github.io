@@ -1,0 +1,194 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>每周论文推荐 - 第18周 | Yayin's Blog</title><meta name="author" content="Yayin"><meta name="copyright" content="Yayin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本周精选论文本周共收集 3 篇安全领域前沿论文，聚焦于自动化漏洞挖掘与利用生成技术。  AutoEG: Exploiting Known Third-Party Vulnerabilities in Black-Box Web Applications来源: arXiv链接: https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2604.00704核心思想: 提出一个全自动多智能体框架，从非结构化漏洞信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周论文推荐 - 第18周">
+<meta property="og:url" content="https://yayin222.github.io/2026/05/01/%E6%AF%8F%E5%91%A8%E8%AE%BA%E6%96%87%E6%8E%A8%E8%8D%90-%E7%AC%AC18%E5%91%A8/index.html">
+<meta property="og:site_name" content="Yayin&#39;s Blog">
+<meta property="og:description" content="本周精选论文本周共收集 3 篇安全领域前沿论文，聚焦于自动化漏洞挖掘与利用生成技术。  AutoEG: Exploiting Known Third-Party Vulnerabilities in Black-Box Web Applications来源: arXiv链接: https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2604.00704核心思想: 提出一个全自动多智能体框架，从非结构化漏洞信息">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yayin222.github.io/images/avatar.png">
+<meta property="article:published_time" content="2026-05-01T13:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-01T13:00:54.643Z">
+<meta property="article:author" content="Yayin">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="安全">
+<meta property="article:tag" content="漏洞挖掘">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yayin222.github.io/images/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "每周论文推荐 - 第18周",
+  "url": "https://yayin222.github.io/2026/05/01/%E6%AF%8F%E5%91%A8%E8%AE%BA%E6%96%87%E6%8E%A8%E8%8D%90-%E7%AC%AC18%E5%91%A8/",
+  "image": "https://yayin222.github.io/images/avatar.png",
+  "datePublished": "2026-05-01T13:00:00.000Z",
+  "dateModified": "2026-05-01T13:00:54.643Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yayin",
+      "url": "https://yayin222.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yayin222.github.io/2026/05/01/%E6%AF%8F%E5%91%A8%E8%AE%BA%E6%96%87%E6%8E%A8%E8%8D%90-%E7%AC%AC18%E5%91%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '每周论文推荐 - 第18周',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Yayin's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">每周论文推荐 - 第18周</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about"><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">每周论文推荐 - 第18周</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-01T13:00:00.000Z" title="发表于 2026-05-01 21:00:00">2026-05-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-01T13:00:54.643Z" title="更新于 2026-05-01 21:00:54">2026-05-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%BA%E6%96%87%E6%8E%A8%E8%8D%90/">论文推荐</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="本周精选论文"><a href="#本周精选论文" class="headerlink" title="本周精选论文"></a>本周精选论文</h2><p>本周共收集 3 篇安全领域前沿论文，聚焦于自动化漏洞挖掘与利用生成技术。</p>
+<hr>
+<h3 id="AutoEG-Exploiting-Known-Third-Party-Vulnerabilities-in-Black-Box-Web-Applications"><a href="#AutoEG-Exploiting-Known-Third-Party-Vulnerabilities-in-Black-Box-Web-Applications" class="headerlink" title="AutoEG: Exploiting Known Third-Party Vulnerabilities in Black-Box Web Applications"></a>AutoEG: Exploiting Known Third-Party Vulnerabilities in Black-Box Web Applications</h3><p><strong>来源</strong>: arXiv<br><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2604.00704">https://arxiv.org/abs/2604.00704</a><br><strong>核心思想</strong>: 提出一个全自动多智能体框架，从非结构化漏洞信息中提取触发逻辑，通过反馈驱动的交互迭代生成针对黑盒 Web 应用的漏洞利用。</p>
+<h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><p>Large-scale web applications are widely deployed with complex third-party components, inheriting security risks arising from component vulnerabilities. Security assessment is therefore required to determine whether such known vulnerabilities remain practically exploitable in real applications. Penetration testing is a widely adopted approach that validates exploitability by launching concrete attacks against known vulnerabilities in real-world black-box systems. However, existing approaches often fail to automatically generate reliable exploits, limiting their effectiveness in practical security assessment. This limitation mainly stems from two issues: (1) precisely triggering vulnerabilities with correct technical details, and (2) adapting exploits to diverse real-world deployment settings.</p>
+<p>In this paper, we propose AutoEG, a fully automated multi-agent framework for exploit generation targeting black-box web applications. AutoEG has two phases: First, AutoEG extracts precise vulnerability trigger logic from unstructured vulnerability information and encapsulates it into reusable trigger functions. Second, AutoEG uses trigger functions for concrete attack objectives and iteratively refines exploits through feedback-driven interaction with the target application. We evaluate AutoEG on 104 real-world vulnerabilities with 29 attack objectives, resulting in 660 exploitation tasks and 55,440 exploit attempts. AutoEG achieves an average success rate of 82.41%, substantially outperforming state-of-the-art baselines, whose best performance reaches only 32.88%.</p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2604.00704">PDF</a></li>
+</ul>
+<hr>
+<h3 id="GONDAR-Contextualizing-Sink-Knowledge-for-Java-Vulnerability-Discovery"><a href="#GONDAR-Contextualizing-Sink-Knowledge-for-Java-Vulnerability-Discovery" class="headerlink" title="GONDAR: Contextualizing Sink Knowledge for Java Vulnerability Discovery"></a>GONDAR: Contextualizing Sink Knowledge for Java Vulnerability Discovery</h3><p><strong>来源</strong>: arXiv<br><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2604.01645">https://arxiv.org/abs/2604.01645</a><br><strong>核心思想</strong>: 以 Sink API 为中心的模糊测试框架，结合 LLM 辅助的静态过滤和双智能体协作（探索+利用），系统性利用 Sink 语义发现 Java 漏洞。</p>
+<h4 id="摘要-1"><a href="#摘要-1" class="headerlink" title="摘要"></a>摘要</h4><p>Java applications are prone to vulnerabilities stemming from the insecure use of security-sensitive APIs, such as file operations enabling path traversal or deserialization routines allowing remote code execution. These sink APIs encode critical information for vulnerability discovery: the program-specific constraints required to reach them and the exploitation conditions necessary to trigger security flaws. Despite this, existing fuzzers largely overlook such vulnerability-specific knowledge, limiting their effectiveness.</p>
+<p>We present GONDAR, a sink-centric fuzzing framework that systematically leverages sink API semantics for targeted vulnerability discovery. GONDAR first identifies reachable and exploitable sink call sites through CWE-specific scanning combined with LLM-assisted static filtering. It then deploys two specialized agents that work collaboratively with a coverage-guided fuzzer: an exploration agent generates inputs to reach target call sites by iteratively solving path constraints, while an exploitation agent synthesizes proof-of-concept exploits by reasoning about and satisfying vulnerability-triggering conditions. The agents and fuzzer continuously exchange seeds and runtime feedback, complementing each other. We evaluated GONDAR on real-world Java benchmarks, where it discovers four times more vulnerabilities than Jazzer, the state-of-the-art Java fuzzer. Notably, an earlier GONDAR version contributed to Team Atlanta’s first-place CRS in the DARPA AI Cyber Challenge, and is integrated into OSS-CRS, a sandbox project in The Linux Foundation’s OpenSSF, to analyze open-source Java projects, where it has already uncovered a zero-day vulnerability.</p>
+<h4 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2604.01645">PDF</a></li>
+</ul>
+<hr>
+<h3 id="Automation-Exploit-A-Multi-Agent-LLM-Framework-for-Adaptive-Offensive-Security"><a href="#Automation-Exploit-A-Multi-Agent-LLM-Framework-for-Adaptive-Offensive-Security" class="headerlink" title="Automation-Exploit: A Multi-Agent LLM Framework for Adaptive Offensive Security"></a>Automation-Exploit: A Multi-Agent LLM Framework for Adaptive Offensive Security</h3><p><strong>来源</strong>: arXiv<br><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2604.22427">https://arxiv.org/abs/2604.22427</a><br><strong>核心思想</strong>: 全自主多智能体攻击框架，通过数字孪生技术实现风险可控的内存破坏漏洞利用，解决了”实弹”执行风险和安全对齐过滤两大挑战。</p>
+<h4 id="摘要-2"><a href="#摘要-2" class="headerlink" title="摘要"></a>摘要</h4><p>The offensive security landscape is highly fragmented: enterprise platforms avoid memory-corruption vulnerabilities due to Denial of Service (DoS) risks, Automatic Exploit Generation (AEG) systems suffer from semantic blindness, and Large Language Model (LLM) agents face safety alignment filters and “Live Fire” execution hazards. We introduce Automation-Exploit, a fully autonomous Multi-Agent System (MAS) framework designed for adaptive offensive security in complex black-box scenarios. It bridges the abstraction gap between reconnaissance and exploitation by autonomously exfiltrating executables and contextual intelligence across multiple protocols, using this data to fuel both logical and binary attack chains. The framework introduces an adaptive safety architecture to mitigate DoS risks. While it natively resolves logical and web-based vulnerabilities, it employs a conditional isomorphic validation for high-risk memory-corruption flaws: if the target binary is successfully exfiltrated, it dynamically instantiates a cross-platform digital twin. By enforcing strict state synchronization, including libc alignment and runtime file descriptor hooking, potentially destructive payloads are iteratively debugged in an isolated replica. This enables a highly risk-mitigated “one-shot” execution on the physical target. Empirical evaluations across eight scenarios, including undocumented zero-day environments to rule out LLM data contamination, validate the framework’s architectural resilience, demonstrating its ability to prevent “live fire” crashes and execute risk-mitigated compromises on actual targets.</p>
+<h4 id="下载-2"><a href="#下载-2" class="headerlink" title="下载"></a>下载</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2604.22427">PDF</a></li>
+</ul>
+<hr>
+<h2 id="本周总结"><a href="#本周总结" class="headerlink" title="本周总结"></a>本周总结</h2><p>本周论文主题高度聚焦：<strong>自动化漏洞利用生成</strong>。三篇论文分别从不同角度突破现有技术瓶颈：</p>
+<ul>
+<li><strong>AutoEG</strong> 解决了黑盒 Web 应用中第三方漏洞的自动化利用问题</li>
+<li><strong>GONDAR</strong> 以 Sink API 语义驱动，显著提升 Java 漏洞发现效率</li>
+<li><strong>Automation-Exploit</strong> 通过数字孪生技术实现”零风险”的内存破坏漏洞利用</li>
+</ul>
+<p>共同趋势：<strong>多智能体架构</strong> + <strong>LLM 辅助推理</strong> + <strong>反馈驱动迭代</strong> 正成为安全自动化领域的新范式。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yayin222.github.io">Yayin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yayin222.github.io/2026/05/01/%E6%AF%8F%E5%91%A8%E8%AE%BA%E6%96%87%E6%8E%A8%E8%8D%90-%E7%AC%AC18%E5%91%A8/">https://yayin222.github.io/2026/05/01/%E6%AF%8F%E5%91%A8%E8%AE%BA%E6%96%87%E6%8E%A8%E8%8D%90-%E7%AC%AC18%E5%91%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yayin222.github.io" target="_blank">Yayin's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/">漏洞挖掘</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E5%85%A8/">安全</a></div><div class="post-share"><div class="social-share" data-image="/images/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/04/01/CVE-2026-20131-%E5%AE%8C%E6%95%B4%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="CVE-2026-20131 Cisco FMC SSRF+反序列化漏洞完整利用分析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">CVE-2026-20131 Cisco FMC SSRF+反序列化漏洞完整利用分析</div></div><div class="info-2"><div class="info-item-1">CVE-2026-20131 Cisco FMC SSRF+反序列化漏洞完整利用分析1. 漏洞概述1.1 基本信息   项目 内容    CVE 编号 CVE-2026-20131   受影响产品 Cisco Firepower Management Center (FMC)   受影响版本 7.6.4 及之前版本（7.6.5 已修复）   漏洞类型 SSRF + 反序列化漏洞组合   CVSS 评分 预计 9.8 (Critical)   1.2 漏洞本质这是一个组合漏洞，由两个独立但相互关联的问题组成：  SSRF（服务端请求伪造） - FMC 会从攻击者控制的 URL 加载 GWT RPC 序列化策略文件 不安全反序列化 - 策略文件可配置启用 Java 原生反序列化，触发 CommonsCollections gadget 链  1.3 攻击效果 ✅ 任意命令执行（RCE） ✅ 以 Tomcat 进程权限运行（通常为 root） ✅ 无需认证（部分接口）   2. 漏洞位置2.1 核心文件1234567891011121314FMC 文件系统路径:/var/opt/CSC...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yayin</div><div class="author-info-description">专注于代码审计和漏洞挖掘的技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Yayin222" target="_blank" title=""><i class="github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%91%A8%E7%B2%BE%E9%80%89%E8%AE%BA%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">本周精选论文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AutoEG-Exploiting-Known-Third-Party-Vulnerabilities-in-Black-Box-Web-Applications"><span class="toc-number">1.1.</span> <span class="toc-text">AutoEG: Exploiting Known Third-Party Vulnerabilities in Black-Box Web Applications</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.1.2.</span> <span class="toc-text">下载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GONDAR-Contextualizing-Sink-Knowledge-for-Java-Vulnerability-Discovery"><span class="toc-number">1.2.</span> <span class="toc-text">GONDAR: Contextualizing Sink Knowledge for Java Vulnerability Discovery</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%91%98%E8%A6%81-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">下载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Automation-Exploit-A-Multi-Agent-LLM-Framework-for-Adaptive-Offensive-Security"><span class="toc-number">1.3.</span> <span class="toc-text">Automation-Exploit: A Multi-Agent LLM Framework for Adaptive Offensive Security</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%91%98%E8%A6%81-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">下载</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%91%A8%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">本周总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/01/%E6%AF%8F%E5%91%A8%E8%AE%BA%E6%96%87%E6%8E%A8%E8%8D%90-%E7%AC%AC18%E5%91%A8/" title="每周论文推荐 - 第18周">每周论文推荐 - 第18周</a><time datetime="2026-05-01T13:00:00.000Z" title="发表于 2026-05-01 21:00:00">2026-05-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/01/CVE-2026-20131-%E5%AE%8C%E6%95%B4%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="CVE-2026-20131 Cisco FMC SSRF+反序列化漏洞完整利用分析">CVE-2026-20131 Cisco FMC SSRF+反序列化漏洞完整利用分析</a><time datetime="2026-04-01T09:12:00.000Z" title="发表于 2026-04-01 17:12:00">2026-04-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/09/CrushFTP-CVE-2025-54309-Analysis/" title="CrushFTP CVE-2025-54309 Analysis">CrushFTP CVE-2025-54309 Analysis</a><time datetime="2025-10-09T11:00:00.000Z" title="发表于 2025-10-09 19:00:00">2025-10-09</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Yayin</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
