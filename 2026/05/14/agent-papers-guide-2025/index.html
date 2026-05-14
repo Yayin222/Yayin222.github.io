@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>各大厂商 Agent 论文精选指南：从 Anthropic 到 Google DeepMind | Yayin's Blog</title><meta name="author" content="Yayin"><meta name="copyright" content="Yayin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2025-2026 年是 AI Agent 爆发的元年。各大厂商纷纷发布重磅论文和技术文章，从架构设计到工程实践，从单 Agent 到多 Agent 协作，Agent 领域正在快速演进。本文精选了最值得学习的论文和技术报告，按厂商分类整理。   🔵 Anthropic (Claude)Anthropic 在 Agent 方向的输出非常系统化，从设计理念到工程实践都有覆盖，是学习 Agent 工">
+<meta property="og:type" content="article">
+<meta property="og:title" content="各大厂商 Agent 论文精选指南：从 Anthropic 到 Google DeepMind">
+<meta property="og:url" content="https://yayin222.github.io/2026/05/14/agent-papers-guide-2025/index.html">
+<meta property="og:site_name" content="Yayin&#39;s Blog">
+<meta property="og:description" content="2025-2026 年是 AI Agent 爆发的元年。各大厂商纷纷发布重磅论文和技术文章，从架构设计到工程实践，从单 Agent 到多 Agent 协作，Agent 领域正在快速演进。本文精选了最值得学习的论文和技术报告，按厂商分类整理。   🔵 Anthropic (Claude)Anthropic 在 Agent 方向的输出非常系统化，从设计理念到工程实践都有覆盖，是学习 Agent 工">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yayin222.github.io/images/avatar.png">
+<meta property="article:published_time" content="2026-05-14T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-05-14T09:31:21.510Z">
+<meta property="article:author" content="Yayin">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Anthropic">
+<meta property="article:tag" content="Google">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="OpenAI">
+<meta property="article:tag" content="多智能体">
+<meta property="article:tag" content="论文推荐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yayin222.github.io/images/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "各大厂商 Agent 论文精选指南：从 Anthropic 到 Google DeepMind",
+  "url": "https://yayin222.github.io/2026/05/14/agent-papers-guide-2025/",
+  "image": "https://yayin222.github.io/images/avatar.png",
+  "datePublished": "2026-05-14T09:30:00.000Z",
+  "dateModified": "2026-05-14T09:31:21.510Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yayin",
+      "url": "https://yayin222.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yayin222.github.io/2026/05/14/agent-papers-guide-2025/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '各大厂商 Agent 论文精选指南：从 Anthropic 到 Google DeepMind',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Yayin's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">各大厂商 Agent 论文精选指南：从 Anthropic 到 Google DeepMind</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about"><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">各大厂商 Agent 论文精选指南：从 Anthropic 到 Google DeepMind</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-14T09:30:00.000Z" title="发表于 2026-05-14 17:30:00">2026-05-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-14T09:31:21.510Z" title="更新于 2026-05-14 17:31:21">2026-05-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AI-Agent/">AI Agent</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+<p>2025-2026 年是 AI Agent 爆发的元年。各大厂商纷纷发布重磅论文和技术文章，从架构设计到工程实践，从单 Agent 到多 Agent 协作，Agent 领域正在快速演进。本文精选了最值得学习的论文和技术报告，按厂商分类整理。</p>
+</blockquote>
+<hr>
+<h2 id="🔵-Anthropic-Claude"><a href="#🔵-Anthropic-Claude" class="headerlink" title="🔵 Anthropic (Claude)"></a>🔵 Anthropic (Claude)</h2><p>Anthropic 在 Agent 方向的输出非常系统化，从设计理念到工程实践都有覆盖，是学习 Agent 工程化的最佳起点。</p>
+<h3 id="1-Building-Effective-Agents-⭐-必读"><a href="#1-Building-Effective-Agents-⭐-必读" class="headerlink" title="1. Building Effective Agents ⭐ 必读"></a>1. Building Effective Agents ⭐ 必读</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://www.anthropic.com/research/building-effective-agents">anthropic.com&#x2F;research&#x2F;building-effective-agents</a></p>
+<p><strong>核心思想</strong>: Anthropic 的 Agent 架构设计哲学。提出了从简单到复杂的渐进式设计模式：</p>
+<ul>
+<li><strong>Augmented LLM</strong> → <strong>Workflow</strong> → <strong>Agent</strong> 三层递进</li>
+<li>工具优化比 prompt 优化更重要——在 SWE-bench 项目中，他们花在优化工具上的时间比优化 prompt 更多</li>
+<li>不要过度设计，能用简单 workflow 解决的问题就不要上 Agent</li>
+</ul>
+<p><strong>适合人群</strong>: 想理解 Agent 工程化设计思路的开发者</p>
+<hr>
+<h3 id="2-Effective-Context-Engineering-for-AI-Agents"><a href="#2-Effective-Context-Engineering-for-AI-Agents" class="headerlink" title="2. Effective Context Engineering for AI Agents"></a>2. Effective Context Engineering for AI Agents</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">anthropic.com&#x2F;engineering&#x2F;effective-context-engineering-for-ai-agents</a></p>
+<p><strong>核心思想</strong>: Agent 上下文管理的核心策略。随着 Agent 运行时间变长，context window 管理成为关键瓶颈：</p>
+<ul>
+<li><strong>Compaction（压缩）</strong>: 将长对话历史压缩为摘要</li>
+<li><strong>Tool Result Clearing</strong>: 清理已处理的工具返回结果</li>
+<li><strong>Memory Tool</strong>: 基于文件系统的外部记忆，让 Agent 持久化存储信息</li>
+</ul>
+<p><strong>适合人群</strong>: 做长时间运行 Agent 的开发者</p>
+<hr>
+<h3 id="3-How-We-Built-Our-Multi-Agent-Research-System"><a href="#3-How-We-Built-Our-Multi-Agent-Research-System" class="headerlink" title="3. How We Built Our Multi-Agent Research System"></a>3. How We Built Our Multi-Agent Research System</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/multi-agent-research-system">anthropic.com&#x2F;engineering&#x2F;multi-agent-research-system</a></p>
+<p><strong>核心思想</strong>: Claude Research 的多 Agent 架构实战。采用 <strong>LeadResearcher + 并行 Subagent</strong> 模式：</p>
+<ul>
+<li>LeadResearcher 负责规划研究流程</li>
+<li>多个 Subagent 并行搜索信息，独立评估结果</li>
+<li>使用 <strong>Interleaved Thinking</strong> 让 Agent 在工具调用间隙进行推理</li>
+</ul>
+<p><strong>适合人群</strong>: 对多 Agent 协作架构感兴趣的人</p>
+<hr>
+<h3 id="4-Writing-Effective-Tools-for-AI-Agents"><a href="#4-Writing-Effective-Tools-for-AI-Agents" class="headerlink" title="4. Writing Effective Tools for AI Agents"></a>4. Writing Effective Tools for AI Agents</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/writing-tools-for-agents">anthropic.com&#x2F;engineering&#x2F;writing-tools-for-agents</a></p>
+<p><strong>核心思想</strong>: 为 Agent 设计工具和为人类设计 API 是完全不同的思路：</p>
+<ul>
+<li>工具描述要面向 Agent 而非人类开发者</li>
+<li>可以用 Agent 自己来优化工具——让 Claude Code 协助改进 MCP Server</li>
+<li>好的工具设计 &#x3D; 好的 Agent 性能</li>
+</ul>
+<hr>
+<h2 id="🟢-OpenAI"><a href="#🟢-OpenAI" class="headerlink" title="🟢 OpenAI"></a>🟢 OpenAI</h2><p>OpenAI 的 Agent 路线更偏向产品化落地，从 Deep Research 到 Codex，展示了 Agent 在不同场景的工程实践。</p>
+<h3 id="5-Harness-Engineering-Leveraging-Codex-in-an-Agent-First-World-⭐-必读"><a href="#5-Harness-Engineering-Leveraging-Codex-in-an-Agent-First-World-⭐-必读" class="headerlink" title="5. Harness Engineering: Leveraging Codex in an Agent-First World ⭐ 必读"></a>5. Harness Engineering: Leveraging Codex in an Agent-First World ⭐ 必读</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://openai.com/index/harness-engineering/">openai.com&#x2F;index&#x2F;harness-engineering</a></p>
+<p><strong>核心思想</strong>: OpenAI 内部用 Codex 以 <strong>0 手写代码</strong> 构建产品的经验总结。核心洞察：</p>
+<ul>
+<li>人类角色从「写代码」转向「设计环境、描述意图、构建反馈循环」</li>
+<li>效率提升约 <strong>10 倍</strong></li>
+<li>新的开发范式：<strong>Harness Engineering</strong>——设计让 Agent 高效工作的环境</li>
+</ul>
+<p><strong>关键概念</strong>:</p>
+<ul>
+<li>环境设计 &gt; 代码编写</li>
+<li>反馈循环 &gt; 一次性 prompt</li>
+<li>可观测性 &gt; 事后调试</li>
+</ul>
+<p><strong>适合人群</strong>: 想理解 Agent-first 开发模式的工程师</p>
+<hr>
+<h3 id="6-OpenAI-Agents-SDK"><a href="#6-OpenAI-Agents-SDK" class="headerlink" title="6. OpenAI Agents SDK"></a>6. OpenAI Agents SDK</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://developers.openai.com/api/docs/guides/agents">developers.openai.com&#x2F;api&#x2F;docs&#x2F;guides&#x2F;agents</a></p>
+<p><strong>核心思想</strong>: OpenAI 的 Agent 开发框架，包含几个关键设计：</p>
+<ul>
+<li><strong>Guardrails</strong>: 输入输出安全护栏</li>
+<li><strong>Handoffs</strong>: Agent 间的任务交接机制</li>
+<li><strong>Tracing</strong>: 全链路可观测性</li>
+<li><strong>Compaction</strong>: 上下文压缩策略</li>
+</ul>
+<hr>
+<h3 id="7-Deep-Research-Operator"><a href="#7-Deep-Research-Operator" class="headerlink" title="7. Deep Research &amp; Operator"></a>7. Deep Research &amp; Operator</h3><p><strong>Deep Research</strong>: <a target="_blank" rel="noopener" href="https://openai.com/index/introducing-deep-research/">openai.com&#x2F;index&#x2F;introducing-deep-research</a><br><strong>Operator</strong>: <a target="_blank" rel="noopener" href="https://openai.com/index/introducing-operator/">openai.com&#x2F;index&#x2F;introducing-operator</a></p>
+<p><strong>核心思想</strong>: 两种不同的 Agent 范式：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Deep Research</th>
+<th>Operator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>交互模式</td>
+<td>深度研究，自主搜索+分析+生成报告</td>
+<td>浏览器操控，GUI Agent</td>
+</tr>
+<tr>
+<td>核心能力</td>
+<td>推理 + 信息综合</td>
+<td>视觉理解 + 操作</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>研究报告、数据分析</td>
+<td>网页操作、表单填写</td>
+</tr>
+<tr>
+<td>底层模型</td>
+<td>o3 优化版</td>
+<td>GPT-4o + 视觉</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🟡-Google-DeepMind"><a href="#🟡-Google-DeepMind" class="headerlink" title="🟡 Google DeepMind"></a>🟡 Google DeepMind</h2><p>Google 在 Agent 方向更偏学术和系统性研究，论文质量很高。</p>
+<h3 id="8-Towards-a-Science-of-Scaling-Agent-Systems-⭐-必读"><a href="#8-Towards-a-Science-of-Scaling-Agent-Systems-⭐-必读" class="headerlink" title="8. Towards a Science of Scaling Agent Systems ⭐ 必读"></a>8. Towards a Science of Scaling Agent Systems ⭐ 必读</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/">research.google&#x2F;blog&#x2F;towards-a-science-of-scaling-agent-systems</a></p>
+<p><strong>核心思想</strong>: 通过 <strong>180 种 Agent 配置</strong> 的系统实验，得出多 Agent 系统的量化扩展原则：</p>
+<ul>
+<li><strong>可并行任务</strong>: 多 Agent 效果显著提升</li>
+<li><strong>顺序任务</strong>: 多 Agent 反而退化</li>
+<li>引入预测模型，为 <strong>87%</strong> 的未见任务选择最优架构</li>
+</ul>
+<p><strong>关键发现</strong>:</p>
+<ul>
+<li>不是所有任务都适合多 Agent</li>
+<li>架构选择可以被量化预测</li>
+<li>Agent 数量存在最优解</li>
+</ul>
+<p><strong>适合人群</strong>: 想从科学角度理解 Agent 系统扩展性的研究者</p>
+<hr>
+<h3 id="9-ReasoningBank-Enabling-Agents-to-Learn-from-Experience"><a href="#9-ReasoningBank-Enabling-Agents-to-Learn-from-Experience" class="headerlink" title="9. ReasoningBank: Enabling Agents to Learn from Experience"></a>9. ReasoningBank: Enabling Agents to Learn from Experience</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://research.google/blog/reasoningbank-enabling-agents-to-learn-from-experience/">research.google&#x2F;blog&#x2F;reasoningbank-enabling-agents-to-learn-from-experience</a></p>
+<p><strong>核心思想</strong>: 让 Agent 从经验中学习推理策略，实现持续进化而非每次从零开始。</p>
+<hr>
+<h3 id="10-Gemini-2-0-Agent-生态"><a href="#10-Gemini-2-0-Agent-生态" class="headerlink" title="10. Gemini 2.0 &amp; Agent 生态"></a>10. Gemini 2.0 &amp; Agent 生态</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/google-gemini-ai-update-december-2024/">blog.google&#x2F;gemini-2.0</a></p>
+<p><strong>核心思想</strong>: Google 的完整 Agent 生态布局：</p>
+<ul>
+<li><strong>Project Mariner</strong>: 浏览器 Agent</li>
+<li><strong>A2A Protocol</strong>: Agent 间通信标准（对标 Anthropic 的 MCP）</li>
+<li><strong>ADK (Agent Development Kit)</strong>: Agent 开发工具包</li>
+<li><strong>Gemini Robotics</strong>: 具身智能 Agent</li>
+</ul>
+<hr>
+<h2 id="📚-综合-Survey-Benchmark"><a href="#📚-综合-Survey-Benchmark" class="headerlink" title="📚 综合 Survey &amp; Benchmark"></a>📚 综合 Survey &amp; Benchmark</h2><h3 id="11-The-2025-AI-Agent-Index-MIT"><a href="#11-The-2025-AI-Agent-Index-MIT" class="headerlink" title="11. The 2025 AI Agent Index (MIT)"></a>11. The 2025 AI Agent Index (MIT)</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://aiagentindex.mit.edu/data/2025-AI-Agent-Index.pdf">aiagentindex.mit.edu</a></p>
+<p>系统性梳理了所有主流 Agent 产品、安全措施、能力评估。适合全面了解 Agent 产业现状。</p>
+<hr>
+<h3 id="12-Evaluation-and-Benchmarking-of-LLM-Agents-A-Survey-KDD’25"><a href="#12-Evaluation-and-Benchmarking-of-LLM-Agents-A-Survey-KDD’25" class="headerlink" title="12. Evaluation and Benchmarking of LLM Agents: A Survey (KDD’25)"></a>12. Evaluation and Benchmarking of LLM Agents: A Survey (KDD’25)</h3><p>Agent 评估基准的综合综述，涵盖通用 Agent、多 Agent、安全评估等多个维度。</p>
+<hr>
+<h3 id="13-TheAgentCompany-NeurIPS-2025"><a href="#13-TheAgentCompany-NeurIPS-2025" class="headerlink" title="13. TheAgentCompany (NeurIPS 2025)"></a>13. TheAgentCompany (NeurIPS 2025)</h3><p><strong>链接</strong>: <a target="_blank" rel="noopener" href="https://openreview.net/forum?id=LZnKNApvhG">openreview.net&#x2F;forum?id&#x3D;LZnKNApvhG</a></p>
+<p>模拟真实工作环境的 Agent 基准测试，评估 Agent 处理邮件、写代码、与同事沟通等能力。结论：简单任务可自主完成，复杂长程任务仍是挑战。</p>
+<hr>
+<h2 id="💡-学习路径建议"><a href="#💡-学习路径建议" class="headerlink" title="💡 学习路径建议"></a>💡 学习路径建议</h2><p>如果你时间有限，推荐按以下顺序阅读：</p>
+<h3 id="入门级（3-篇）"><a href="#入门级（3-篇）" class="headerlink" title="入门级（3 篇）"></a>入门级（3 篇）</h3><ol>
+<li><strong>Anthropic “Building Effective Agents”</strong> — 理解 Agent 设计哲学</li>
+<li><strong>OpenAI “Harness Engineering”</strong> — 理解 Agent-first 开发实践</li>
+<li><strong>Google “Towards a Science of Scaling Agent Systems”</strong> — 理解 Agent 系统的科学原理</li>
+</ol>
+<h3 id="进阶级（-3-篇）"><a href="#进阶级（-3-篇）" class="headerlink" title="进阶级（+3 篇）"></a>进阶级（+3 篇）</h3><ol start="4">
+<li>Anthropic “Effective Context Engineering” — 上下文管理</li>
+<li>Anthropic “Multi-Agent Research System” — 多 Agent 架构</li>
+<li>Google “ReasoningBank” — Agent 经验学习</li>
+</ol>
+<h3 id="深入级（-2-篇）"><a href="#深入级（-2-篇）" class="headerlink" title="深入级（+2 篇）"></a>深入级（+2 篇）</h3><ol start="7">
+<li>OpenAI Agents SDK 文档 — 工程实现</li>
+<li>TheAgentCompany Benchmark — 评估方法论</li>
+</ol>
+<hr>
+<h2 id="📊-各厂商-Agent-策略对比"><a href="#📊-各厂商-Agent-策略对比" class="headerlink" title="📊 各厂商 Agent 策略对比"></a>📊 各厂商 Agent 策略对比</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Anthropic</th>
+<th>OpenAI</th>
+<th>Google</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心理念</td>
+<td>渐进式设计，工具优先</td>
+<td>Agent-first，产品驱动</td>
+<td>学术驱动，系统性研究</td>
+</tr>
+<tr>
+<td>Agent 范式</td>
+<td>Workflow → Agent</td>
+<td>Deep Research &#x2F; Codex &#x2F; Operator</td>
+<td>A2A 协议 + ADK</td>
+</tr>
+<tr>
+<td>多 Agent</td>
+<td>LeadResearcher + Subagent</td>
+<td>Codex 团队协作</td>
+<td>量化扩展原则</td>
+</tr>
+<tr>
+<td>工具标准</td>
+<td>MCP</td>
+<td>Agents SDK</td>
+<td>A2A Protocol</td>
+</tr>
+<tr>
+<td>开源程度</td>
+<td>高（Cookbook + MCP）</td>
+<td>中（SDK + 文档）</td>
+<td>中（ADK + 论文）</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>写在最后</strong>: Agent 领域正在从「能不能用」走向「怎么用好」。各大厂商的思路虽然不同，但核心共识是：<strong>好的 Agent &#x3D; 好的工具设计 + 好的上下文管理 + 好的反馈循环</strong>。这比单纯追求更大的模型更有意义。</p>
+</blockquote>
+<hr>
+<p><em>本文整理于 2026 年 5 月 14 日，如需转载请注明出处。</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yayin222.github.io">Yayin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yayin222.github.io/2026/05/14/agent-papers-guide-2025/">https://yayin222.github.io/2026/05/14/agent-papers-guide-2025/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yayin222.github.io" target="_blank">Yayin's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/Anthropic/">Anthropic</a><a class="post-meta__tags" href="/tags/OpenAI/">OpenAI</a><a class="post-meta__tags" href="/tags/Google/">Google</a><a class="post-meta__tags" href="/tags/%E8%AE%BA%E6%96%87%E6%8E%A8%E8%8D%90/">论文推荐</a><a class="post-meta__tags" href="/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/">多智能体</a></div><div class="post-share"><div class="social-share" data-image="/images/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/05/08/weekly-papers-week19/" title="每周论文推荐 - 第19周"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">每周论文推荐 - 第19周</div></div><div class="info-2"><div class="info-item-1">本周精选论文本周共收录 15 篇新论文，涵盖 Agent 推理、LLM 安全、漏洞挖掘、供应链安全等多个方向。  1. LCM: Lossless Context Management来源: arXiv链接: arxiv.org&#x2F;abs&#x2F;2605.04050核心思想: 提出无损上下文管理方案，优化 LLM Agent 的长期记忆与上下文窗口利用，解决长对话中信息丢失问题。  2. Strat-Reasoner: Reinforcing Strategic Reasoning of LLMs in Multi-Agent Games来源: arXiv链接: arxiv.org&#x2F;abs&#x2F;2605.04906核心思想: 通过强化学习增强 LLM 在多智能体博弈中的战略推理能力，提升复杂对抗场景下的决策质量。  3. On the (In-)Security of the Shuffling Defense in Transformer Secure Inference来源: arXiv (ACL 2026)链接: arxiv.org&#x2F;a...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/05/08/weekly-papers-week19/" title="每周论文推荐 - 第19周"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-05-08</div><div class="info-item-2">每周论文推荐 - 第19周</div></div><div class="info-2"><div class="info-item-1">本周精选论文本周共收录 15 篇新论文，涵盖 Agent 推理、LLM 安全、漏洞挖掘、供应链安全等多个方向。  1. LCM: Lossless Context Management来源: arXiv链接: arxiv.org&#x2F;abs&#x2F;2605.04050核心思想: 提出无损上下文管理方案，优化 LLM Agent 的长期记忆与上下文窗口利用，解决长对话中信息丢失问题。  2. Strat-Reasoner: Reinforcing Strategic Reasoning of LLMs in Multi-Agent Games来源: arXiv链接: arxiv.org&#x2F;abs&#x2F;2605.04906核心思想: 通过强化学习增强 LLM 在多智能体博弈中的战略推理能力，提升复杂对抗场景下的决策质量。  3. On the (In-)Security of the Shuffling Defense in Transformer Secure Inference来源: arXiv (ACL 2026)链接: arxiv.org&#x2F;a...</div></div></div></a><a class="pagination-related" href="/2026/05/01/%E6%AF%8F%E5%91%A8%E8%AE%BA%E6%96%87%E6%8E%A8%E8%8D%90-%E7%AC%AC18%E5%91%A8/" title="每周论文推荐 - 第18周"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-05-01</div><div class="info-item-2">每周论文推荐 - 第18周</div></div><div class="info-2"><div class="info-item-1">本周精选论文本周共收集 3 篇安全领域前沿论文，聚焦于自动化漏洞挖掘与利用生成技术。  AutoEG: Exploiting Known Third-Party Vulnerabilities in Black-Box Web Applications来源: arXiv链接: https://arxiv.org/abs/2604.00704核心思想: 提出一个全自动多智能体框架，从非结构化漏洞信息中提取触发逻辑，通过反馈驱动的交互迭代生成针对黑盒 Web 应用的漏洞利用。 摘要Large-scale web applications are widely deployed with complex third-party components, inheriting security risks arising from component vulnerabilities. Security assessment is therefore required to determine whether such known vulnerabilities remain practic...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yayin</div><div class="author-info-description">专注于代码审计和漏洞挖掘的技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Yayin222" target="_blank" title=""><i class="github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%B5-Anthropic-Claude"><span class="toc-number">1.</span> <span class="toc-text">🔵 Anthropic (Claude)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Building-Effective-Agents-%E2%AD%90-%E5%BF%85%E8%AF%BB"><span class="toc-number">1.1.</span> <span class="toc-text">1. Building Effective Agents ⭐ 必读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Effective-Context-Engineering-for-AI-Agents"><span class="toc-number">1.2.</span> <span class="toc-text">2. Effective Context Engineering for AI Agents</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-How-We-Built-Our-Multi-Agent-Research-System"><span class="toc-number">1.3.</span> <span class="toc-text">3. How We Built Our Multi-Agent Research System</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Writing-Effective-Tools-for-AI-Agents"><span class="toc-number">1.4.</span> <span class="toc-text">4. Writing Effective Tools for AI Agents</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9F%A2-OpenAI"><span class="toc-number">2.</span> <span class="toc-text">🟢 OpenAI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Harness-Engineering-Leveraging-Codex-in-an-Agent-First-World-%E2%AD%90-%E5%BF%85%E8%AF%BB"><span class="toc-number">2.1.</span> <span class="toc-text">5. Harness Engineering: Leveraging Codex in an Agent-First World ⭐ 必读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-OpenAI-Agents-SDK"><span class="toc-number">2.2.</span> <span class="toc-text">6. OpenAI Agents SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Deep-Research-Operator"><span class="toc-number">2.3.</span> <span class="toc-text">7. Deep Research &amp; Operator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9F%A1-Google-DeepMind"><span class="toc-number">3.</span> <span class="toc-text">🟡 Google DeepMind</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Towards-a-Science-of-Scaling-Agent-Systems-%E2%AD%90-%E5%BF%85%E8%AF%BB"><span class="toc-number">3.1.</span> <span class="toc-text">8. Towards a Science of Scaling Agent Systems ⭐ 必读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-ReasoningBank-Enabling-Agents-to-Learn-from-Experience"><span class="toc-number">3.2.</span> <span class="toc-text">9. ReasoningBank: Enabling Agents to Learn from Experience</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Gemini-2-0-Agent-%E7%94%9F%E6%80%81"><span class="toc-number">3.3.</span> <span class="toc-text">10. Gemini 2.0 &amp; Agent 生态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E7%BB%BC%E5%90%88-Survey-Benchmark"><span class="toc-number">4.</span> <span class="toc-text">📚 综合 Survey &amp; Benchmark</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-The-2025-AI-Agent-Index-MIT"><span class="toc-number">4.1.</span> <span class="toc-text">11. The 2025 AI Agent Index (MIT)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-Evaluation-and-Benchmarking-of-LLM-Agents-A-Survey-KDD%E2%80%9925"><span class="toc-number">4.2.</span> <span class="toc-text">12. Evaluation and Benchmarking of LLM Agents: A Survey (KDD’25)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-TheAgentCompany-NeurIPS-2025"><span class="toc-number">4.3.</span> <span class="toc-text">13. TheAgentCompany (NeurIPS 2025)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A1-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84%E5%BB%BA%E8%AE%AE"><span class="toc-number">5.</span> <span class="toc-text">💡 学习路径建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E7%BA%A7%EF%BC%883-%E7%AF%87%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">入门级（3 篇）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E7%BA%A7%EF%BC%88-3-%E7%AF%87%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">进阶级（+3 篇）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E7%BA%A7%EF%BC%88-2-%E7%AF%87%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">深入级（+2 篇）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E5%90%84%E5%8E%82%E5%95%86-Agent-%E7%AD%96%E7%95%A5%E5%AF%B9%E6%AF%94"><span class="toc-number">6.</span> <span class="toc-text">📊 各厂商 Agent 策略对比</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/14/agent-papers-guide-2025/" title="各大厂商 Agent 论文精选指南：从 Anthropic 到 Google DeepMind">各大厂商 Agent 论文精选指南：从 Anthropic 到 Google DeepMind</a><time datetime="2026-05-14T09:30:00.000Z" title="发表于 2026-05-14 17:30:00">2026-05-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/08/weekly-papers-week19/" title="每周论文推荐 - 第19周">每周论文推荐 - 第19周</a><time datetime="2026-05-08T13:00:00.000Z" title="发表于 2026-05-08 21:00:00">2026-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/01/%E6%AF%8F%E5%91%A8%E8%AE%BA%E6%96%87%E6%8E%A8%E8%8D%90-%E7%AC%AC18%E5%91%A8/" title="每周论文推荐 - 第18周">每周论文推荐 - 第18周</a><time datetime="2026-05-01T13:00:00.000Z" title="发表于 2026-05-01 21:00:00">2026-05-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/01/CVE-2026-20131-%E5%AE%8C%E6%95%B4%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="CVE-2026-20131 Cisco FMC SSRF+反序列化漏洞完整利用分析">CVE-2026-20131 Cisco FMC SSRF+反序列化漏洞完整利用分析</a><time datetime="2026-04-01T09:12:00.000Z" title="发表于 2026-04-01 17:12:00">2026-04-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/09/CrushFTP-CVE-2025-54309-Analysis/" title="CrushFTP CVE-2025-54309 Analysis">CrushFTP CVE-2025-54309 Analysis</a><time datetime="2025-10-09T11:00:00.000Z" title="发表于 2025-10-09 19:00:00">2025-10-09</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Yayin</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
